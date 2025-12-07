@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chertsey S.S.N.R.</title>
+    <style>
+        /* ===== GLOBAL STYLES ===== */
+        body {
+            margin: 0;
+            font-family: Arial, Helvetica, sans-serif;
+            background: #f5f5f5;
+            color: #333;
+        }
+        header {
+            background: #1d3557;
+            color: white;
+            padding: 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 26px;
+        }
+        nav a {
+            color: white;
+            margin-left: 20px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: opacity 0.2s;
+        }
+        nav a:hover {
+            opacity: 0.7;
+        }
+
+        .hero {
+            background: url('https://via.placeholder.com/1600x500?text=Chertsey+SSNR') center/cover;
+            color: white;
+            text-align: center;
+            padding: 140px 20px;
+        }
+        .hero h2 {
+            font-size: 50px;
+            margin-bottom: 10px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: auto;
+            padding: 20px;
+        }
+        h2 {
+            border-bottom: 4px solid #1d3557;
+            padding-bottom: 5px;
+            margin-top: 40px;
+        }
+
+        /* ===== GALLERY ===== */
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+        }
+        .gallery img {
+            width: 100%;
+            border-radius: 10px;
+            object-fit: cover;
+        }
+
+        /* ===== EVENTS ===== */
+        .event {
+            background: white;
+            padding: 15px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+        }
+
+        /* ===== CONTACT FORM ===== */
+        form input, form textarea {
+            width: 100%;
+            padding: 12px;
+            margin: 10px 0;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+        form button {
+            background: #1d3557;
+            color: white;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #1d3557;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Chertsey S.S.N.R.</h1>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#events">Events</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <h2>Welcome to Chertsey S.S.N.R.</h2>
+        <p>Supporting our local community</p>
+    </section>
+
+    <!-- ABOUT US -->
+    <div class="container" id="about">
+        <h2>About Us</h2>
+        <p>
+            Chertsey S.S.N.R. is a long-standing community venue supporting local events,
+            social gatherings, charity functions, and group activities. We aim to offer a
+            warm and inclusive environment for residents and visitors alike.
+        </p>
+        <p>
+            Our mission is to provide a welcoming, affordable, and accessible place where
+            the community can come together.
+        </p>
+    </div>
+
+    <!-- GALLERY -->
+    <div class="container" id="gallery">
+        <h2>Gallery</h2>
+        <div class="gallery">
+            <img src="https://via.placeholder.com/400x300" alt="Photo 1" />
+            <img src="https://via.placeholder.com/400x300" alt="Photo 2" />
+            <img src="https://via.placeholder.com/400x300" alt="Photo 3" />
+            <img src="https://via.placeholder.com/400x300" alt="Photo 4" />
+        </div>
+    </div>
+
+    <!-- EVENTS -->
+    <div class="container" id="events">
+        <h2>Upcoming Events</h2>
+
+        <div class="event">
+            <h3>Live Band Night</h3>
+            <p><strong>Date:</strong> 10th February 2026</p>
+            <p>Join us for an evening of live music and entertainment.</p>
+        </div>
+
+        <div class="event">
+            <h3>Community Quiz</h3>
+            <p><strong>Date:</strong> 20th March 2026</p>
+            <p>A fun quiz night open to all ages. Prizes for winning teams!</p>
+        </div>
+
+        <div class="event">
+            <h3>Charity Bingo</h3>
+            <p><strong>Date:</strong> 5th April 2026</p>
+            <p>Help raise money for local causes in this relaxed bingo session.</p>
+        </div>
+    </div>
+
+    <!-- CONTACT FORM -->
+    <div class="container" id="contact">
+        <h2>Contact Us</h2>
+        <form>
+            <input type="text" placeholder="Your Name" required />
+            <input type="email" placeholder="Your Email" required />
+            <textarea rows="5" placeholder="Your Message" required></textarea>
+            <button type="submit">Send</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Chertsey S.S.N.R. - All Rights Reserved</p>
+    </footer>
+
+</body>
+</html>
