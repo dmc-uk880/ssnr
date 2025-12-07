@@ -10,8 +10,9 @@
     <style>
         /* ===== VARIABLES & BASE STYLES ===== */
         :root {
-            --primary-color: #1a4e85; /* Deep Navy Blue (from Facebook) */
-            --secondary-color: #f7a83d; /* Amber/Gold (for accents) */
+            /* NEW COLORS BASED ON THE LOGO (Dark Teal and Cream/Beige) */
+            --primary-color: #1a4f4f; /* Dark Teal/Navy Green (New Main Color) */
+            --secondary-color: #e0d9c2; /* Light Cream/Beige (New Accent Color) */
             --text-color: #333333;
             --light-bg: #ffffff;
             --dark-bg: #f4f7f6;
@@ -29,7 +30,8 @@
         
         h1, h2, h3 {
             font-family: var(--font-heading);
-            color: var(--primary-color);
+            /* Headings remain primary color for strong contrast */
+            color: var(--primary-color); 
             line-height: 1.2;
         }
         
@@ -39,6 +41,7 @@
             transition: color 0.3s;
         }
         a:hover {
+            /* Hover colour is secondary color for subtle accent */
             color: var(--secondary-color);
         }
 
@@ -60,26 +63,20 @@
             align-items: center;
         }
 
+        .club-logo {
+            height: 40px; 
+            width: auto;
+            border-radius: 50%; 
+            background-color: white; 
+            padding: 2px;
+        }
+
         .logo-text {
             color: var(--light-bg);
             margin-left: 10px;
             font-size: 24px;
             font-weight: 700;
             letter-spacing: 1px;
-        }
-
-        .logo-icon {
-            /* Placeholder for a simple logo/icon - Lion/Crest concept */
-            width: 30px;
-            height: 30px;
-            background: var(--secondary-color);
-            border-radius: 50%;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            font-size: 18px;
-            font-weight: bold;
-            color: var(--primary-color);
         }
         
         nav a {
@@ -97,6 +94,7 @@
             bottom: -5px;
             width: 0;
             height: 2px;
+            /* Accent colour for underline */
             background: var(--secondary-color);
             transition: width 0.3s;
         }
@@ -107,6 +105,7 @@
 
         /* Unofficial Banner */
         .unofficial-banner {
+            /* Accent colour for banner */
             background: var(--secondary-color);
             color: var(--primary-color);
             text-align: center;
@@ -115,322 +114,7 @@
             font-weight: 700;
         }
 
-        /* ===== HERO SECTION ===== */
+        /* ===== HERO SECTION (Using the Bar Image) ===== */
         .hero {
-            background: url('https://via.placeholder.com/1600x500/1a4e85/ffffff?text=Community+Hall+%7C+Chertsey+SSNR') center/cover no-repeat;
-            color: white;
-            padding: 120px 20px 80px;
-            text-align: center;
-            position: relative;
-        }
-        
-        .hero-overlay {
-            background: rgba(0, 0, 0, 0.4);
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-        }
-        
-        .hero-content {
-            position: relative;
-            z-index: 2;
-        }
-
-        .hero h2 {
-            font-size: 4em;
-            margin-bottom: 10px;
-            color: white;
-            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-        }
-        
-        .hero p {
-            font-size: 1.5em;
-            font-weight: 300;
-            margin-top: 0;
-        }
-        
-        .btn-primary {
-            display: inline-block;
-            background: var(--secondary-color);
-            color: var(--primary-color);
-            padding: 12px 25px;
-            border-radius: 5px;
-            font-weight: bold;
-            text-transform: uppercase;
-            margin-top: 20px;
-            transition: background 0.3s;
-        }
-
-        .btn-primary:hover {
-            background: #ffc166;
-            color: var(--primary-color);
-        }
-
-        /* ===== MAIN CONTENT LAYOUT ===== */
-        .container {
-            max-width: 1100px;
-            margin: 40px auto;
-            padding: 0 20px;
-        }
-        
-        .section-heading {
-            text-align: center;
-            margin-bottom: 40px;
-        }
-
-        .section-heading h2 {
-            font-size: 2.5em;
-            padding-bottom: 5px;
-            border-bottom: 4px solid var(--secondary-color);
-            display: inline-block;
-        }
-
-        /* ===== ABOUT US / DESCRIPTION ===== */
-        #about {
-            background: var(--light-bg);
-            padding: 40px 0;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
-
-        /* ===== EVENTS LAYOUT (Grid) ===== */
-        #events {
-            padding: 40px 0;
-        }
-
-        .events-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
-
-        .event-card {
-            background: var(--light-bg);
-            padding: 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
-            transition: transform 0.3s;
-            border-top: 5px solid var(--secondary-color);
-        }
-
-        .event-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
-        }
-
-        .event-card h3 {
-            margin-top: 0;
-            border-bottom: 2px solid #eee;
-            padding-bottom: 10px;
-            font-size: 1.5em;
-        }
-
-        .event-card strong {
-            color: var(--primary-color);
-            font-weight: 700;
-            display: block;
-            margin-bottom: 5px;
-        }
-
-        /* ===== GALLERY LAYOUT (Flex/Grid) ===== */
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-        }
-        .gallery-grid img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 8px;
-            display: block;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-
-        /* ===== CONTACT FORM ===== */
-        #contact {
-            background: var(--light-bg);
-            padding: 40px;
-            border-radius: 10px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
-        }
-        
-        form label {
-            display: block;
-            margin-bottom: 5px;
-            font-weight: 700;
-        }
-
-        form input, form textarea {
-            width: 100%;
-            padding: 15px;
-            margin-bottom: 20px;
-            border-radius: 5px;
-            border: 1px solid #ddd;
-            font-size: 1em;
-            box-sizing: border-box;
-            background: #fafafa;
-        }
-        
-        form button {
-            background: var(--primary-color);
-            color: white;
-            padding: 15px 30px;
-            border: none;
-            border-radius: 5px;
-            cursor: pointer;
-            font-size: 1.1em;
-            font-weight: 700;
-            transition: background 0.3s;
-        }
-        
-        form button:hover {
-            background: #103154;
-        }
-
-        /* ===== FOOTER ===== */
-        footer {
-            background: var(--primary-color);
-            color: white;
-            text-align: center;
-            padding: 30px 20px;
-            margin-top: 60px;
-            font-size: 0.9em;
-        }
-        
-        footer p {
-            margin: 5px 0;
-        }
-        
-        /* Media Queries for Responsiveness */
-        @media (max-width: 768px) {
-            header {
-                flex-direction: column;
-                padding: 15px 20px;
-            }
-            nav {
-                margin-top: 10px;
-            }
-            nav a {
-                margin: 0 10px;
-            }
-            .hero h2 {
-                font-size: 3em;
-            }
-        }
-    </style>
-</head>
-<body>
-    <div class="unofficial-banner">
-        ⚠️ This is an **UNOFFICIAL** fan-made community page. Find the official group here: <a href="https://www.facebook.com/ssnrclub" target="_blank" style="color: black; text-decoration: underline;">Chertsey SSNR Facebook</a> 
-    </div>
-
-    <header>
-        <div class="logo-container">
-            <div class="logo-icon">C</div>
-            <span class="logo-text">CHERTSEY S.S.N.R.</span>
-        </div>
-        <nav>
-            <a href="#about">About</a>
-            <a href="#events">Events</a>
-            <a href="#gallery">Gallery</a>
-            <a href="#contact">Contact</a>
-        </nav>
-    </header>
-
-    <section class="hero">
-        <div class="hero-overlay"></div>
-        <div class="hero-content">
-            <h2>Your Local Community Hub</h2>
-            <p>Gatherings, Events, and Support in the heart of Chertsey.</p>
-            <a href="#events" class="btn-primary">See What's On</a>
-        </div>
-    </section>
-
-    <div class="container" id="about">
-        <div class="section-heading">
-            <h2>About The Club</h2>
-        </div>
-        <p>
-            The Chertsey S.S.N.R. (Social, Sports, and Recreational) Club is a non-profit community venue dedicated to hosting a wide variety of local activities. 
-            From social nights and darts leagues to charity events and family gatherings, we strive to be a welcoming and inclusive space for all residents of Chertsey and surrounding areas.
-        </p>
-        <p>
-            Our mission, inspired by the community spirit seen on the <a href="https://www.facebook.com/ssnrclub" target="_blank">official Facebook page</a>, is to ensure the club remains a thriving, affordable, and accessible place where community bonds are strengthened. 
-            **This page is a fan-made resource to highlight the fantastic work and events hosted here.**
-        </p>
-    </div>
-
-    <div class="container" id="events">
-        <div class="section-heading">
-            <h2>Upcoming Events</h2>
-        </div>
-        <div class="events-grid">
-            <div class="event-card">
-                <h3>Saturday Live Music Night</h3>
-                <p><strong>Date:</strong> 10th February 2026</p>
-                <p><strong>Time:</strong> 8:00 PM onwards</p>
-                <p>Join us for a brilliant evening with a live band playing classics and modern hits. Bar open late!</p>
-            </div>
-
-            <div class="event-card">
-                <h3>Annual Community Quiz</h3>
-                <p><strong>Date:</strong> 20th March 2026</p>
-                <p><strong>Time:</strong> Doors 7:00 PM, Start 7:30 PM</p>
-                <p>Test your general knowledge! Teams of 4-6 welcome. Great prizes and all proceeds go to local charities.</p>
-            </div>
-
-            <div class="event-card">
-                <h3>Charity Bingo & Raffle</h3>
-                <p><strong>Date:</strong> 5th April 2026</p>
-                <p><strong>Time:</strong> 7:30 PM Start</p>
-                <p>A relaxed, fun session of bingo. Eyes down for cash prizes and a special raffle supporting the Chertsey Food Bank.</p>
-            </div>
-        </div>
-        <p style="text-align: center; margin-top: 30px;">
-            For the most up-to-date schedule, please check the <a href="https://www.facebook.com/ssnrclub" target="_blank">official SSNR Facebook page</a>.
-        </p>
-    </div>
-
-    <div class="container" id="gallery">
-        <div class="section-heading">
-            <h2>Photos from the Club</h2>
-        </div>
-        <div class="gallery-grid">
-            <img src="https://via.placeholder.com/400x300/1a4e85/ffffff?text=Club+Interior" alt="Club Interior" />
-            <img src="https://via.placeholder.com/400x300/f7a83d/1a4e85?text=Community+Event" alt="Community Event" />
-            <img src="https://via.placeholder.com/400x300/1a4e85/ffffff?text=Darts+Area" alt="Darts Area" />
-            <img src="https://via.placeholder.com/400x300/f7a83d/1a4e85?text=Social+Night" alt="Social Night" />
-        </div>
-    </div>
-
-    <div class="container" id="contact">
-        <div class="section-heading">
-            <h2>Get In Touch</h2>
-        </div>
-        <form>
-            <p>Got a suggestion for this unofficial site, or a question for the club? Use the form below!</p>
-            <label for="name">Your Name</label>
-            <input type="text" id="name" placeholder="Your Name" required />
-            
-            <label for="email">Your Email</label>
-            <input type="email" id="email" placeholder="Your Email" required />
-            
-            <label for="message">Your Message</label>
-            <textarea id="message" rows="6" placeholder="Your Message" required></textarea>
-            
-            <button type="submit">Send Message</button>
-        </form>
-    </div>
-
-    <footer>
-        <p>&copy; 2026 Chertsey S.S.N.R. Community Page.</p>
-        <p>This is an unofficial community resource. Please direct all official club inquiries to the club management.</p>
-        <p><a href="https://www.facebook.com/ssnrclub" target="_blank" style="color: #f7a83d;">Visit the Official Facebook Page</a></p>
-    </footer>
-
-</body>
-</html>
+            /* Using the bar image as background */
+            background: url('http://googleusercontent.com/image_generation_content/0
