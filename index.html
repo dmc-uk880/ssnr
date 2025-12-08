@@ -1,11 +1,475 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <title>Hello World</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chertsey SS&NR Club - Private Members' Club</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Oswald:wght@500&display=swap" rel="stylesheet">
+    <style>
+        /* ===== VARIABLES & BASE STYLES ===== */
+        :root {
+            /* COLORS BASED ON LOGO & Reserve Theme */
+            --primary-color: #1a4f4f; /* Dark Teal/Navy Green (Primary Club Colour) */
+            --secondary-color: #f1f0e8; /* Dignified Off-White/Cream (Accent) */
+            --text-color: #333333;
+            --light-bg: #ffffff;
+            --dark-bg: #f4f7f6;
+            --font-main: 'Roboto', sans-serif;
+            --font-heading: 'Oswald', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--font-main);
+            background: var(--dark-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3 {
+            font-family: var(--font-heading);
+            color: var(--primary-color); 
+            line-height: 1.2;
+        }
+        
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        a:hover {
+            color: #5aa4a4; 
+        }
+
+        /* ===== HEADER / NAVIGATION ===== */
+        header {
+            background: var(--primary-color);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .club-logo {
+            height: 40px; 
+            width: auto;
+            border-radius: 50%; 
+            background-color: white; 
+            padding: 2px;
+        }
+
+        .logo-text {
+            color: var(--light-bg);
+            margin-left: 10px;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        nav a {
+            color: var(--light-bg);
+            margin-left: 20px;
+            font-weight: 400;
+            padding: 5px 0;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-color);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* Unofficial Banner */
+        .unofficial-banner {
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            text-align: center;
+            padding: 8px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+
+        /* ===== HERO SECTION (Using the Bar Image) ===== */
+        .hero {
+            /* Using the bar image as background */
+            background: url('http://googleusercontent.com/generated_image_content/0') center top/cover no-repeat;
+            color: white;
+            padding: 120px 20px 80px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-overlay {
+            /* Dark overlay for text contrast */
+            background: rgba(0, 0, 0, 0.55); 
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h2 {
+            font-size: 4em;
+            margin-bottom: 10px;
+            color: white;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
+        }
+        
+        .hero p {
+            font-size: 1.5em;
+            font-weight: 300;
+            margin-top: 0;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+        }
+        
+        .btn-primary {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+
+        .btn-primary:hover {
+            background: #5aa4a4; 
+            color: white;
+        }
+
+        /* ===== MAIN CONTENT LAYOUT ===== */
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .section-heading {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-heading h2 {
+            font-size: 2.5em;
+            padding-bottom: 5px;
+            border-bottom: 4px solid var(--secondary-color);
+            display: inline-block;
+            color: var(--primary-color);
+        }
+        
+        /* New: Features Grid */
+        .features-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .feature-item {
+            flex-basis: 30%; /* Three items per row */
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background: var(--secondary-color);
+            font-weight: 700;
+            color: var(--primary-color);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+
+
+        /* ===== EVENTS LAYOUT (Grid) ===== */
+        #events {
+            padding: 40px 0;
+        }
+
+        .events-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .event-card {
+            background: var(--light-bg);
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            transition: transform 0.3s;
+            border-top: 5px solid var(--secondary-color);
+        }
+
+        .event-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+        }
+
+        .event-card h3 {
+            margin-top: 0;
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            font-size: 1.5em;
+        }
+
+        .event-card strong {
+            color: var(--primary-color);
+            font-weight: 700;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        /* ===== GALLERY LAYOUT (Flex/Grid) ===== */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        .gallery-grid img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            display: block;
+            box-shadow: 0 0 0 3px var(--secondary-color), 0 2px 4px rgba(0,0,0,0.1); 
+            transition: transform 0.3s;
+        }
+        
+        .gallery-grid img:hover {
+            transform: scale(1.03);
+        }
+
+        /* ===== CONTACT FORM ===== */
+        #contact {
+            background: var(--light-bg);
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+        }
+        
+        form label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: 700;
+        }
+
+        form input, form textarea {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ddd;
+            font-size: 1em;
+            box-sizing: border-box;
+            background: #fafafa;
+        }
+        
+        form button {
+            background: var(--primary-color);
+            color: white;
+            padding: 15px 30px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 1.1em;
+            font-weight: 700;
+            transition: background 0.3s;
+        }
+        
+        form button:hover {
+            background: #5aa4a4;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+            font-size: 0.9em;
+        }
+        
+        footer p {
+            margin: 5px 0;
+        }
+        
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            header {
+                flex-direction: column;
+                padding: 15px 20px;
+            }
+            nav {
+                margin-top: 10px;
+            }
+            nav a {
+                margin: 0 10px;
+            }
+            .hero h2 {
+                font-size: 3em;
+            }
+            .hero {
+                background-position: center;
+            }
+            .feature-item {
+                flex-basis: 100%; /* Stack features on small screens */
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>Hello World</h1>
-    <p>This is a simple web page displaying "Hello World!".</p>
+    <div class="unofficial-banner">
+        ⚠️ This is an **UNOFFICIAL** fan-made community page. Find the official group here: <a href="https://www.facebook.com/ssnrclub" target="_blank" style="color: black; text-decoration: underline;">Chertsey SS&NR Facebook</a> 
+    </div>
+
+    <header>
+        <div class="logo-container">
+            <img src="http://googleusercontent.com/generated_image_content/0" alt="Chertsey SS&NR Club Logo" class="club-logo">
+            <span class="logo-text">CHERTSEY SS&NR</span>
+        </div>
+        <nav>
+            <a href="#about">About</a>
+            <a href="#events">Events</a>
+            <a href="#gallery">Gallery</a>
+            <a href="#contact">Contact</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h2>Chertsey SS&NR Club</h2>
+            <p>Your local **Private Members' Club** in the heart of Chertsey.</p>
+            <a href="#about" class="btn-primary">Discover Our Facilities</a>
+        </div>
+    </section>
+
+    <div class="container" id="about">
+        <div class="section-heading">
+            <h2>About The Club</h2>
+        </div>
+        <p>
+            The Chertsey **SS&NR Club** is a long-standing **Private Members' Club**, proudly serving the community and those connected to the **Soldiers, Sailors, & National Reserve** heritage since the early 20th century. We are dedicated to providing a high-quality, welcoming social environment.
+        </p>
+
+        <p>
+            Our spacious and well-maintained facilities make us the perfect location for socializing, entertainment, and private functions. Visitors can expect fantastic value across our well-stocked bar and enjoy the traditional, friendly atmosphere that defines our club.
+        </p>
+
+        <h3>Club Facilities include:</h3>
+        <div class="features-grid">
+            <div class="feature-item">Large Seated Area</div>
+            <div class="feature-item">Room for Hire</div>
+            <div class="feature-item">Snooker Area</div>
+            <div class="feature-item">Outdoor Garden & BBQ</div>
+            <div class="feature-item">Dedicated Darts Area</div>
+            <div class="feature-item">Large Screen Sports (Big Games)</div>
+        </div>
+    </div>
+
+    <hr/>
+
+    <div class="container" id="events">
+        <div class="section-heading">
+            <h2>Upcoming Events</h2>
+        </div>
+        <div class="events-grid">
+            <div class="event-card">
+                <h3>Saturday Live Music Night</h3>
+                <p><strong>Date:</strong> 10th February 2026</p>
+                <p><strong>Time:</strong> 8:00 PM onwards</p>
+                <p>Join us for a brilliant evening with a live band playing classics and modern hits. Bar open late!</p>
+            </div>
+
+            <div class="event-card">
+                <h3>Annual Community Quiz</h3>
+                <p><strong>Date:</strong> 20th March 2026</p>
+                <p><strong>Time:</strong> Doors 7:00 PM, Start 7:30 PM</p>
+                <p>Test your general knowledge! Teams of 4-6 welcome. Great prizes and all proceeds go to local charities.</p>
+            </div>
+
+            <div class="event-card">
+                <h3>Charity Bingo & Raffle</h3>
+                <p><strong>Date:</strong> 5th April 2026</p>
+                <p><strong>Time:</strong> 7:30 PM Start</p>
+                <p>A relaxed, fun session of bingo. Eyes down for cash prizes and a special raffle supporting the Chertsey Food Bank.</p>
+            </div>
+        </div>
+        <p style="text-align: center; margin-top: 30px;">
+            For the most up-to-date schedule, please check the <a href="https://www.facebook.com/ssnrclub" target="_blank">official SS&NR Facebook page</a>.
+        </p>
+    </div>
+
+    <hr/>
+
+    <div class="container" id="gallery">
+        <div class="section-heading">
+            <h2>Photos from the Club</h2>
+        </div>
+        <div class="gallery-grid">
+            <img src="http://googleusercontent.com/generated_image_content/0" alt="Club Bar Area" />
+            
+            <img src="https://via.placeholder.com/400x300/1a4f4f/f1f0e8?text=Snooker+Room" alt="Snooker Room" />
+            <img src="https://via.placeholder.com/400x300/f1f0e8/1a4f4f?text=Function+Room+Setup" alt="Function Room Setup" />
+            <img src="https://via.placeholder.com/400x300/1a4f4f/f1f0e8?text=Outdoor+Garden+Area" alt="Outdoor Garden Area" />
+        </div>
+    </div>
+
+    <hr/>
+
+    <div class="container" id="contact">
+        <div class="section-heading">
+            <h2>Get In Touch</h2>
+        </div>
+        <form>
+            <p>Got a suggestion for this unofficial site, or a question? Use the form below! **(For official club booking/membership queries, please use the Facebook link.)**</p>
+            <label for="name">Your Name</label>
+            <input type="text" id="name" placeholder="Your Name" required />
+            
+            <label for="email">Your Email</label>
+            <input type="email" id="email" placeholder="Your Email" required />
+            
+            <label for="message">Your Message</label>
+            <textarea id="message" rows="6" placeholder="Your Message" required></textarea>
+            
+            <button type="submit">Send Message</button>
+        </form>
+    </div>
+
+    <footer>
+        <p>&copy; 2026 Chertsey SS&NR Community Page.</p>
+        <p>This is an **unofficial** community resource.</p>
+        <p><a href="https://www.facebook.com/ssnrclub" target="_blank" style="color: #f1f0e8;">Visit the Official Facebook Page</a></p>
+    </footer>
+
 </body>
 </html>
