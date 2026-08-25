@@ -391,7 +391,11 @@
             const gridContainer = document.getElementById('poster-grid');
             
             try {
-                const response = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/posters`);
+                // Tries lowercase 'posters' first; if not found, falls back to capital 'Posters'
+                let response = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/posters`);
+                if (!response.ok) {
+                    response = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/Posters`);
+                }
                 if (!response.ok) throw new Error('Directory not found or empty');
                 
                 const files = await response.json();
