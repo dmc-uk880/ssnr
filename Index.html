@@ -1,0 +1,460 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Chertsey SS&NR Club - Private Members' Club</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Oswald:wght@500&display=swap" rel="stylesheet">
+    <style>
+        /* ===== VARIABLES & BASE STYLES ===== */
+        :root {
+            --primary-color: #1a4f4f; /* Dark Teal/Navy Green */
+            --secondary-color: #f1f0e8; /* Dignified Off-White/Cream */
+            --text-color: #333333;
+            --light-bg: #ffffff;
+            --dark-bg: #f4f7f6;
+            --font-main: 'Roboto', sans-serif;
+            --font-heading: 'Oswald', sans-serif;
+        }
+
+        body {
+            margin: 0;
+            font-family: var(--font-main);
+            background: var(--dark-bg);
+            color: var(--text-color);
+            line-height: 1.6;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+            color: var(--primary-color); 
+            line-height: 1.2;
+        }
+        
+        a {
+            color: var(--primary-color);
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+        a:hover {
+            color: #5aa4a4; 
+        }
+
+        header {
+            background: var(--primary-color);
+            padding: 10px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+        }
+        
+        .logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .club-logo {
+            height: 40px; 
+            width: auto;
+            border-radius: 50%; 
+            background-color: white; 
+            padding: 2px;
+        }
+
+        .logo-text {
+            color: var(--light-bg);
+            margin-left: 10px;
+            font-size: 24px;
+            font-weight: 700;
+            letter-spacing: 1px;
+        }
+        
+        nav a {
+            color: var(--light-bg);
+            margin-left: 20px;
+            font-weight: 400;
+            padding: 5px 0;
+            position: relative;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -5px;
+            width: 0;
+            height: 2px;
+            background: var(--secondary-color);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        .hero {
+            background: url('bar.png') center top/cover no-repeat;
+            color: white;
+            padding: 120px 20px 80px;
+            text-align: center;
+            position: relative;
+        }
+        
+        .hero-overlay {
+            background: rgba(0, 0, 0, 0.55); 
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 1;
+        }
+        
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero h2 {
+            font-size: 4em;
+            margin-bottom: 10px;
+            color: white;
+            text-shadow: 2px 2px 6px rgba(0,0,0,0.8);
+        }
+        
+        .hero p {
+            font-size: 1.5em;
+            font-weight: 300;
+            margin-top: 0;
+            text-shadow: 1px 1px 3px rgba(0,0,0,0.7);
+        }
+        
+        .btn-primary {
+            display: inline-block;
+            background: var(--primary-color);
+            color: white;
+            padding: 12px 25px;
+            border-radius: 5px;
+            font-weight: bold;
+            text-transform: uppercase;
+            margin-top: 20px;
+            transition: background 0.3s;
+        }
+        .btn-primary:hover {
+            background: #256d6d;
+            color: white;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: 40px auto;
+            padding: 0 20px;
+        }
+        
+        .section-heading {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        .section-heading h2 {
+            font-size: 2.5em;
+            padding-bottom: 5px;
+            border-bottom: 4px solid var(--secondary-color);
+            display: inline-block;
+            color: var(--primary-color);
+        }
+
+        /* ===== AUTOMATIC POSTER GRID ===== */
+        .poster-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .poster-card {
+            background: var(--light-bg);
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .poster-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+        }
+
+        .poster-card a {
+            display: block;
+            overflow: hidden;
+        }
+
+        .poster-card img {
+            width: 100%;
+            height: 320px;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease;
+        }
+
+        .poster-card:hover img {
+            transform: scale(1.03);
+        }
+
+        .poster-info {
+            padding: 12px;
+            text-align: center;
+            background: var(--light-bg);
+            border-top: 1px solid var(--secondary-color);
+            flex-grow: 1;
+        }
+
+        .poster-date {
+            display: block;
+            font-size: 0.85em;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        .poster-title {
+            margin: 4px 0 0 0;
+            font-size: 1.1em;
+            font-family: var(--font-heading);
+            color: var(--primary-color);
+            letter-spacing: 0.5px;
+        }
+
+        .fb-banner-note {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 0.95em;
+            color: var(--text-color);
+            background: var(--light-bg);
+            padding: 15px;
+            border-radius: 8px;
+            box-shadow: 0 2px 6px rgba(0,0,0,0.05);
+        }
+
+        /* ===== FEATURES & GALLERY ===== */
+        .features-grid {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-around;
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .feature-item {
+            flex-basis: 30%; 
+            margin-bottom: 20px;
+            padding: 15px;
+            border-radius: 8px;
+            background: var(--secondary-color);
+            color: var(--primary-color);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+            font-weight: 700;
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+        
+        .gallery-grid img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            display: block;
+            box-shadow: 0 0 0 3px var(--secondary-color), 0 2px 4px rgba(0,0,0,0.1); 
+            transition: transform 0.3s;
+        }
+        
+        footer {
+            background: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+            margin-top: 60px;
+            font-size: 0.95em;
+        }
+        
+        footer p { margin: 8px 0; }
+
+        @media (max-width: 768px) {
+            header { flex-direction: column; }
+            .hero h2 { font-size: 3em; }
+            .feature-item { flex-basis: 100%; }
+            .poster-grid { grid-template-columns: repeat(auto-fill, minmax(160px, 1fr)); }
+            .poster-card img { height: 220px; }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="logo-container">
+            <img src="ssnr.png" alt="Chertsey SS&NR Club Logo" class="club-logo">
+            <span class="logo-text">CHERTSEY SS&NR</span>
+        </div>
+        <nav>
+            <a href="#events">Events</a>
+            <a href="#about">About</a>
+            <a href="#gallery">Gallery</a>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <div class="hero-overlay"></div>
+        <div class="hero-content">
+            <h2>Chertsey SS&NR Club</h2>
+            <p>A private members social club offering a broad range of entertainment for all.</p>
+            <a href="#about" class="btn-primary">Our Facilities</a>
+        </div>
+    </section>
+
+    <!-- ===== UPCOMING EVENTS SECTION ===== -->
+    <div class="container" id="events">
+        <div class="section-heading">
+            <h2>Upcoming Events</h2>
+        </div>
+        
+        <div class="poster-grid" id="poster-grid">
+            <p style="text-align:center; width:100%; grid-column: 1/-1; color: var(--text-color);">Loading upcoming events...</p>
+        </div>
+
+        <div class="fb-banner-note">
+            <p style="margin: 0 0 10px 0;">Looking for daily notices, committee updates, or member discussions?</p>
+            <a href="https://www.facebook.com/ssnrclub" target="_blank" class="btn-primary" style="margin-top: 0; padding: 8px 16px; font-size: 0.85em;">Visit Official Facebook Group &rarr;</a>
+        </div>
+    </div>
+
+    <!-- ===== ABOUT SECTION ===== -->
+    <div class="container" id="about">
+        <div class="section-heading">
+            <h2>About The Club</h2>
+        </div>
+        <p>The Chertsey SS&NR Club is a private members social club, honouring the heritage of the Soldiers, Sailors, & National Reserve. We provide a welcoming environment for all our members.</p>
+        
+        <p>Our facilities are perfect for socialising and private functions, featuring a well-stocked bar and a traditional atmosphere. We are easily accessible with a private car park.</p>
+
+        <div class="features-grid">
+            <div class="feature-item">Large Seated Area</div>
+            <div class="feature-item">Room for Hire</div>
+            <div class="feature-item">Snooker Area</div>
+            <div class="feature-item">Outdoor Garden & BBQ</div>
+            <div class="feature-item">Dedicated Darts Area</div>
+            <div class="feature-item">Private Car Park</div>
+        </div>
+    </div>
+
+    <!-- ===== GALLERY SECTION ===== -->
+    <div class="container" id="gallery">
+        <div class="section-heading">
+            <h2>Club Gallery</h2>
+        </div>
+        <div class="gallery-grid">
+            <img src="bar.png" alt="Club Bar Area" />
+            <img src="outside.png" alt="Club Exterior" />
+        </div>
+    </div>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <h3>Chertsey SS&NR Club</h3>
+        <p><strong>Address:</strong> Heriot Road, Chertsey, Surrey, United Kingdom</p>
+        <p><strong>Phone:</strong> 01932 562567</p>
+        <p><strong>Email:</strong> <a href="mailto:secretary.ssnr@btconnect.com" style="color: var(--secondary-color);">secretary.ssnr@btconnect.com</a></p>
+        <br>
+        <p>&copy; 2026 Chertsey SS&NR Club. All rights reserved.</p>
+        <p><a href="https://www.facebook.com/ssnrclub" target="_blank" style="color: var(--secondary-color); text-decoration: underline;">Official Facebook Page</a></p>
+    </footer>
+
+    <!-- ===== AUTOMATIC GITHUB POSTER SCRIPT ===== -->
+    <script>
+        async function fetchUpcomingPosters() {
+            const GITHUB_USER = 'dmc-uk880'; 
+            const GITHUB_REPO = 'ssnr';      
+            
+            const gridContainer = document.getElementById('poster-grid');
+            
+            try {
+                const response = await fetch(`https://api.github.com/repos/${GITHUB_USER}/${GITHUB_REPO}/contents/posters`);
+                if (!response.ok) throw new Error('Directory not found or empty');
+                
+                const files = await response.json();
+                
+                const now = new Date();
+                const today = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+
+                const upcomingPosters = files
+                    .map(file => {
+                        // Matches pattern: YYYY-MM-DD-title.jpg|jpeg|png|webp|svg
+                        const match = file.name.match(/^(\d{4}-\d{2}-\d{2})-(.+)\.(jpg|jpeg|png|webp|svg)$/i);
+                        if (!match) return null;
+
+                        const [_, dateStr, rawTitle] = match;
+                        
+                        const [year, month, day] = dateStr.split('-').map(Number);
+                        const eventDate = new Date(year, month - 1, day);
+                        const expiryDate = new Date(year, month - 1, day, 23, 59, 59);
+
+                        return {
+                            url: file.download_url,
+                            title: rawTitle.replace(/-/g, ' '),
+                            eventDate: eventDate,
+                            expiryDate: expiryDate
+                        };
+                    })
+                    .filter(item => item !== null && item.expiryDate >= today)
+                    .sort((a, b) => a.eventDate - b.eventDate);
+
+                if (upcomingPosters.length === 0) {
+                    gridContainer.innerHTML = '<p style="text-align:center; width:100%; grid-column: 1/-1; color: var(--text-color);">No upcoming scheduled events at the moment. Check back soon!</p>';
+                    return;
+                }
+
+                gridContainer.innerHTML = upcomingPosters.map(poster => {
+                    const formattedDate = poster.eventDate.toLocaleDateString('en-GB', {
+                        day: 'numeric',
+                        month: 'short',
+                        year: 'numeric'
+                    });
+
+                    const cleanTitle = poster.title.replace(/\b\w/g, c => c.toUpperCase());
+
+                    return `
+                        <div class="poster-card">
+                            <a href="${poster.url}" target="_blank" title="Click to open full poster">
+                                <img src="${poster.url}" alt="${cleanTitle}">
+                            </a>
+                            <div class="poster-info">
+                                <span class="poster-date">${formattedDate}</span>
+                                <h4 class="poster-title">${cleanTitle}</h4>
+                            </div>
+                        </div>
+                    `;
+                }).join('');
+
+            } catch (error) {
+                console.error('Poster fetch error:', error);
+                gridContainer.innerHTML = '<p style="text-align:center; width:100%; grid-column: 1/-1; color: var(--text-color);">Check back soon for upcoming poster announcements!</p>';
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', fetchUpcomingPosters);
+    </script>
+</body>
+</html>
